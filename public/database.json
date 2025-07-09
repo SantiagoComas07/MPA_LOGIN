@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "c5b5",
+      "fullName": "javier combita",
+      "email": "javier@gmail.com",
+      "password": "javier123+"
+    },
+    {
+      "id": "55ac",
+      "fullName": "lucas martinez",
+      "email": "lucas@gmail.com",
+      "password": "lucas123+"
+    },
+    {
+      "id": "d737",
+      "fullName": "maria magdalena",
+      "email": "maria@gmail.com",
+      "password": "maria123+"
+    }
+  ]
+}
