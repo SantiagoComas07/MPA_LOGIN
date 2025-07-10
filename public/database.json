@@ -17,6 +17,12 @@
       "fullName": "maria magdalena",
       "email": "maria@gmail.com",
       "password": "maria123+"
+    },
+    {
+      "id": "61be",
+      "name": "emiro",
+      "email": "emiro@gmail.com",
+      "password": "emiro123-"
     }
   ]
 }

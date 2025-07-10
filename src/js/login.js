@@ -14,10 +14,11 @@ $loginForm.addEventListener("submit", (event) => {
 
 
 async function login() {
-
+console.log("Iniciando login")
     let response = await fetch(`${endPoint}?email=${$email.value}`);
     //Aqui le douy tiempo para que el .json se convierta a javascript
     let data = await response.json()
+    console.log("Respuesta del login", response)
 
     console.log(data[0]);
     // Si el data regresa vacio entonces se le dice al usuario que se vaya a registrar.
@@ -32,7 +33,8 @@ async function login() {
 
             //Usuario logueado y el valor de la llave
             localStorage.setItem("currentUser", JSON.stringify(data[0]))
-            window.location.href="./dashboard.html";
+            window.location.href="/src/views/dashboard.html";
+            console.log("Ingresado al localstorage")
 
             alert("login exitoso");
 
