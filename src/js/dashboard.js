@@ -1,4 +1,3 @@
-
 import '../css/dashboard.css';
 import { alertError, alertSuccess } from './alerts';
 
@@ -10,10 +9,12 @@ if (!currentUser) {
   window.location.href = "../views/login.html";
 }
 
+const userRole = currentUser?.role || "user";
+
 $closeSection.addEventListener('click', () => {
   localStorage.removeItem("currentUser");
   window.location.href = "/index.html";
-  console.log("Funciona")
+  console.log("Sesión cerrada");
 });
 
 // DOM Elements
@@ -32,6 +33,11 @@ let editingId = null;
 document.addEventListener("DOMContentLoaded", async () => {
   const data = await getAppointment();
   showCards(data);
+
+  // Desactiva el formulario si el usuario no es admin
+ 
+    alertError("Solo los administradores pueden registrar o modificar citas.");
+
 });
 
 $form.addEventListener("submit", async function (event) {
@@ -74,7 +80,7 @@ async function createAppointment() {
       alertError("Sorry, please try again later.");
       throw new Error(response.statusText);
     } else {
-      alertSuccess("scheduled appointment");
+      alertSuccess("Scheduled appointment");
       return newAppointment;
     }
 
@@ -124,13 +130,13 @@ async function deleteAppointment(id) {
       throw new Error("The appointment could not be deleted.");
     }
 
-    alertSuccess("The quote has been successfully deleted");
+    alertSuccess("The appointment has been successfully deleted");
 
     const citas = await getAppointment();
     showCards(citas);
 
   } catch (error) {
-    alertError("Hubo un problema al eliminar");
+    alertError("There was a problem deleting the appointment.");
   }
 }
 
@@ -149,8 +155,14 @@ function showCards(data) {
     const card = document.createElement("div");
     card.className = "box-father";
 
+    // Solo muestra botones si el rol es admin
+    const actionButtons = userRole === "admin" ? `
+      <a href="#" class="btn edit-btn" data-id="${appointment.id}">Edit</a>
+      <a href="#" class="btn delete-btn" data-id="${appointment.id}">Delete</a>
+    ` : '';
+
     card.innerHTML = `
-      <div class="card-box">
+      <div class="card-box">    
         <div class="card-body">
           <h5 class="card-title">Appointment</h5>
           <p class="card-text">User: ${appointment.namePerson}</p>
@@ -160,42 +172,43 @@ function showCards(data) {
           <p class="card-text">Notes: ${appointment.description}</p>
           <p class="card-text">Pet: ${appointment.namePet}</p>
           <div class="btn-box">
-            <a href="#" class="btn edit-btn" data-id="${appointment.id}">Edit</a>
-            <a href="#" class="btn delete-btn"  data-id="${appointment.id}">Delete</a>
+            ${actionButtons}
           </div>
         </div>
       </div>
     `;
+
     container.appendChild(card);
   });
 
-  document.querySelectorAll(".delete-btn").forEach(button => {
-    button.addEventListener("click", async (e) => {
-      e.preventDefault();
-      const id = button.getAttribute("data-id");
-      await deleteAppointment(id);
+  // Eventos solo si el usuario es admin
+  if (userRole === "admin") {
+    document.querySelectorAll(".delete-btn").forEach(button => {
+      button.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const id = button.getAttribute("data-id");
+        await deleteAppointment(id);
+      });
     });
-  });
 
-  document.querySelectorAll(".edit-btn").forEach(button => {
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
-      const id = button.getAttribute("data-id");
-      const appointment = data.find(item => item.id == id);
-      if (appointment) {
-        $petName.value = appointment.namePet;
-        $ownerName.value = appointment.namePerson;
-        $phone.value = appointment.phone;
-        $date.value = appointment.date;
-        $time.value = appointment.time;
-        $notes.value = appointment.description;
+    document.querySelectorAll(".edit-btn").forEach(button => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = button.getAttribute("data-id");
+        const appointment = data.find(item => item.id == id);
+        if (appointment) {
+          $petName.value = appointment.namePet;
+          $ownerName.value = appointment.namePerson;
+          $phone.value = appointment.phone;
+          $date.value = appointment.date;
+          $time.value = appointment.time;
+          $notes.value = appointment.description;
 
-        isEditing = true;
-        editingId = id;
-        alertSuccess("Edit mode activated");
-      }
+          isEditing = true;
+          editingId = id;
+          alertSuccess("Edit mode activated");
+        }
+      });
     });
-  });
+  }
 }
-
-

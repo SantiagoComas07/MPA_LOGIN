@@ -4,7 +4,8 @@
       "id": "c5b5",
       "fullName": "javier combita",
       "email": "javier@gmail.com",
-      "password": "javier123+"
+      "password": "javier123+",
+      "role": "admin"
     },
     {
       "id": "55ac",
@@ -16,7 +17,8 @@
       "id": "d737",
       "fullName": "maria magdalena",
       "email": "maria@gmail.com",
-      "password": "maria123+"
+      "password": "maria123+",
+      "role": "admin"
     },
     {
       "id": "61be",
@@ -34,6 +36,15 @@
       "time": "2025-07-16T07:37",
       "description": "Fiebre y tos.",
       "id": "62e3"
+    },
+    {
+      "id": "5171",
+      "namePet": "piriwiki",
+      "namePerson": "alfonso",
+      "phone": "320548790",
+      "date": "2025-07-26",
+      "time": "2025-07-31T06:21",
+      "description": "es muy inteligente y juega agredes"
     }
   ]
 }
