@@ -1,7 +1,7 @@
 const $loginForm = document.getElementById("login-form");
 const $email = document.getElementById("email");
 const $password = document.getElementById("password");
-//Aqui hacemos un link en donde ingresamos a los emails y lo volvemos dinamicos 
+//Here we make a link where we enter the emails and make it dynamic.
 const endPoint = "http://localhost:3000/users";
 
 $loginForm.addEventListener("submit", (event) => {
@@ -16,30 +16,30 @@ $loginForm.addEventListener("submit", (event) => {
 async function login() {
 console.log("Iniciando login")
     let response = await fetch(`${endPoint}?email=${$email.value}`);
-    //Aqui le douy tiempo para que el .json se convierta a javascript
+    //Here I give you time to convert the .json to javascript
     let data = await response.json()
     console.log("Respuesta del login", response)
 
     console.log(data[0]);
-    // Si el data regresa vacio entonces se le dice al usuario que se vaya a registrar.
+    // If the data returns empty then the user is told to go and register.
     if (data.length == 0) {
 
         alert("Ese correo no existe, vaya y registrese");
 
         // console.log(data[0]);
     } else {
-        // Se evalua que la password sea correcta para conderle acceso al usuario.
+        // The password is evaluated to ensure it is correct in order to grant access to the user.
         if (data[0].password == $password.value) {
 
-            //Usuario logueado y el valor de la llave
+            //Logged in user and key value
             localStorage.setItem("currentUser", JSON.stringify(data[0]))
             window.location.href="/src/views/dashboard.html";
             console.log("Ingresado al localstorage")
 
             alert("login exitoso");
 
-            // Implementen logica para guardar el usuario en el local storage.
-            // la variable que se llame currentUser.
+            // Implement logic to save the user to local storage.
+            // the variable called currentUser.
 
         } else {
             alert("Contraseña equivocada");

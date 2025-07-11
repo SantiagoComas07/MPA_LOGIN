@@ -1,6 +1,8 @@
 import Swal from "sweetalert2";
 
 
+
+//This is the module for alerts in the application.
 const Toast = Swal.mixin({
     toast: true,
     position: "top-end",

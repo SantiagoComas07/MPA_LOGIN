@@ -25,6 +25,12 @@
       "name": "emiro",
       "email": "emiro@gmail.com",
       "password": "emiro123-"
+    },
+    {
+      "id": "507a",
+      "name": "Juan David Contreras Coronado",
+      "email": "juanriwi123@gmail.com",
+      "password": "admin123."
     }
   ],
   "appointments": [

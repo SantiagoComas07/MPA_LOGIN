@@ -4,7 +4,7 @@ import { alertError, alertSuccess } from './alerts';
 // Logout logic
 const $closeSection = document.getElementById("logout-btn");
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
+// I check if the user is logged in
 if (!currentUser) {
   window.location.href = "../views/login.html";
 }
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const data = await getAppointment();
   showCards(data);
 
-  // Desactiva el formulario si el usuario no es admin
+  // Disables the form if the user is not an administrator
  
     alertError("Solo los administradores pueden registrar o modificar citas.");
 
@@ -57,6 +57,7 @@ $form.addEventListener("submit", async function (event) {
   editingId = null;
 });
 
+// This is a function to create a new appointment
 async function createAppointment() {
   const newAppointment = {
     namePet: $petName.value,
@@ -76,6 +77,7 @@ async function createAppointment() {
       body: JSON.stringify(newAppointment)
     });
 
+    // Here i check if the response is ok
     if (!response.ok) {
       alertError("Sorry, please try again later.");
       throw new Error(response.statusText);
@@ -89,6 +91,7 @@ async function createAppointment() {
   }
 }
 
+// Here we update an appointment
 async function updateAppointment(id) {
   const updatedAppointment = {
     namePet: $petName.value,
@@ -120,6 +123,7 @@ async function updateAppointment(id) {
   }
 }
 
+// This function deletes an appointment
 async function deleteAppointment(id) {
   try {
     const response = await fetch(`${endPointAppointments}/${id}`, {
@@ -140,6 +144,8 @@ async function deleteAppointment(id) {
   }
 }
 
+
+// This function retrieves all appointments
 async function getAppointment() {
   const response = await fetch(endPointAppointments);
   const data = await response.json();
@@ -147,6 +153,9 @@ async function getAppointment() {
   return appointmentsArray;
 }
 
+
+
+// This function displays the appointments in cards
 function showCards(data) {
   const container = document.getElementById("cardContainer");
   container.innerHTML = "";
@@ -161,6 +170,7 @@ function showCards(data) {
       <a href="#" class="btn delete-btn" data-id="${appointment.id}">Delete</a>
     ` : '';
 
+    // Create the card with the appointment details
     card.innerHTML = `
       <div class="card-box">    
         <div class="card-body">
@@ -181,7 +191,7 @@ function showCards(data) {
     container.appendChild(card);
   });
 
-  // Eventos solo si el usuario es admin
+  // Events only if the user is an administrator
   if (userRole === "admin") {
     document.querySelectorAll(".delete-btn").forEach(button => {
       button.addEventListener("click", async (e) => {

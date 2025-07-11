@@ -2,7 +2,6 @@ const $registerForm = document.getElementById("register-form");
 const $nameUser =document.getElementById("nameUser")
 const $email = document.getElementById("emailUser");
 const $password = document.getElementById("passwordUser");
-//Aqui hacemos un link en donde ingresamos a los emails y lo volvemos dinamicos 
 const endPoint = "http://localhost:3000/users";
 
 $registerForm.addEventListener("submit", (event) => {
@@ -15,7 +14,7 @@ $registerForm.addEventListener("submit", (event) => {
 
 
 async function register() {
-// Envio de informacion del register
+// Sending registration information
 const person={
     name: $nameUser.value,
     email: $email.value,
@@ -24,7 +23,7 @@ const person={
 
 console.log("Iniciando register")
     let response = await fetch(`${endPoint}?email=${$email.value}`);
-    //Aqui le douy tiempo para que el .json se convierta a javascript
+    //Here I give you time to convert the .json to javascript
     let data = await response.json()
     console.log("Respuesta del register", response);
 
@@ -33,7 +32,7 @@ if (data.length > 0) {
     return;
   }
 
-// Hacemos el POST
+// We do the POST
 let saveResponse = await fetch(endPoint, {
     method: "POST",
     headers: {
@@ -51,19 +50,10 @@ if (!saveResponse.ok) {
     return;
   }
 
-    // Si el data regresa vacio entonces se le dice al usuario que se vaya a registrar.
+    // If the data returns empty then the user is told to go and register.
 
         localStorage.setItem("currentUser", JSON.stringify(saveResponse))
         window.location.href="/src/views/login.html";
         alert("register exitoso");
-        // console.log(data[0]);
-    // } else {
-    //     if (data[0].password == $password.value) {
-    //     } else {
-    //         alert("Contraseña equivocada");
-
-
-    //     }
-
-    // }
+  
     };
