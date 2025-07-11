@@ -10,14 +10,51 @@
 <body>
     <div class="dashboard-container" id="inside">
         <header>
-            <h1>Panel de Usuario</h1>
-            <button id="logout-btn">Cerrar sesión</button>
+            <h1>Welcome</h1>
+            <button id="logout-btn">Log out</button>
         </header>
-        <main>
-            <p>¡Bienvenido a tu dashboard! Aquí puedes ver tu información personal y más.</p>
-        </main>
     </div>
-    <script type="module" src="../js/dashboard.js"></script>
+    <main id="home">
+        <section class="form-wrapper">
+          <form id="form">
+            <div class="form-group">
+              <label for="petName">Pet Name</label>
+              <input type="text" id="petName" />
+            </div>
+            <div class="form-group">
+              <label for="ownerName">Your Name</label>
+              <input type="text" id="ownerName" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="number" id="phone" />
+            </div>
+            <div class="form-group">
+              <label for="date">Visit Date</label>
+              <input type="date" id="date" />
+            </div>
+            <div class="form-group">
+              <label for="time">Visit Time</label>
+              <input type="datetime-local" id="time" />
+            </div>
+            <div class="form-group">
+              <label for="notes">Notes</label>
+              <textarea id="notes" rows="4"></textarea>
+            </div>
+            <div class="form-group full">
+              <button type="submit">Send</button>
+            </div>
+          </form>
+        </section>
+      
+        <section id="appointment_id">
+          <div id="cardContainer"></div>
+        </section>
+      </main>
+      
+
+
+     <script type="module" src="../js/dashboard.js"></script>
 </body>
 
 </html>

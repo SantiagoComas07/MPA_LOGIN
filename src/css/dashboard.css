@@ -1,8 +1,23 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  background-color: #f9f9f9;
+}
+
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f7fafc;
   margin: 0;
 }
+
 
 .dashboard-container {
   max-width: 800px;
@@ -18,15 +33,9 @@ header {
   padding: 1rem;
   color: white;
   border-radius: 8px;
+  margin-bottom: 3rem;
 }
 
-main {
-  background: white;
-  padding: 2rem;
-  margin-top: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
 
 #logout-btn {
   background-color: rgb(66, 66, 248);
@@ -40,3 +49,140 @@ main {
 #logout-btn:hover {
   background-color: #fa5252;
 }
+
+
+.form-wrapper {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 3rem auto;
+}
+
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+
+.form-group {
+  flex: 1 1 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  flex: 1 1 100%;
+}
+
+
+label {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+#appointment_id {
+  margin-top: 5rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+
+/* Here is the styles of the cards */
+
+.cardContainer{
+display: flex;
+min-width: 250px;
+flex-direction: row;
+flex-wrap: wrap;
+
+
+}
+
+
+.box-father{
+
+width: 30%;
+
+}
+
+
+.card-box {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  font-family: sans-serif;
+}
+
+.card-box h5 {
+  margin-bottom: 12px;
+  color: #333;
+  font-size: 18px;
+}
+
+.card-box p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.btn-box {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.btn-box a {
+  flex: 1;
+  padding: 8px;
+  text-align: center;
+  background: #4c6ef5;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.btn-box a:last-child {
+  background: #fa5252;
+}
+
+
+
+
+
+
+

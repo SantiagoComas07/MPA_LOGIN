@@ -1,4 +1,21 @@
+
+*{
+
+margin:0;
+padding: 0;
+
+}
+
+
+html{
+
+  height: 100%;
+
+}
+
+
 body {
+  height: 100%;
   font-family: sans-serif;
   text-align: center;
   background-color: #f0f4f8;
@@ -32,3 +49,28 @@ h1 {
 .btn:hover {
   background-color: #005fa3;
 }
+
+
+main{
+
+width: 100%;
+margin: 0;
+
+}
+.content{
+
+margin:0;
+
+}
+
+
+
+.content img{
+
+width: 20rem;;
+
+}
+
+
+
+
