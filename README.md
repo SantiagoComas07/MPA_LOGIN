@@ -19,32 +19,59 @@ You can register in the web page, you can loguearte y apartar citas para tus mas
 ## structure
 
 MPA_LOGIN/
+
 ├── database/
+
 │   └── database.json
+
 ├── node_modules/
+
 ├── public/
+
 │   └── img/
+
 │       └── gat.jpg
+
 ├── src/
+
 │   ├── css/
+
 │   │   ├── dashboard.css
+
 │   │   ├── index.css
+
 │   │   ├── login.css
+
 │   │   └── register.css
+
 │   ├── js/
+
 │   │   ├── alerts.js
+
 │   │   ├── dashboard.js
+
 │   │   ├── login.js
+
 │   │   └── register.js
+
 │   └── views/
+
 │       ├── dashboard.html
+
 │       ├── login.html
+
 │       └── register.html
+
 ├── .gitignore
+
 ├── index.html
+
 ├── LICENSE
+
 ├── package-lock.json
+
 ├── package.json
+
 └── README.md
 
 
