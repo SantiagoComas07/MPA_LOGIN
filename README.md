@@ -13,7 +13,7 @@ You can register in the web page, you can loguearte y apartar citas para tus mas
 * HTML 5
 * CSS 3
 * javaScript 
-* node.js --v20
+* node.js v22.17.0
 
 
 ## structure
